@@ -1,0 +1,29 @@
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import helmet from 'helmet';
+import { userRouter } from './routes/userRoutes';
+import config from '../../shared/config';
+import logger from '../../shared/logger';
+
+const app = express();
+
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/v1/users', userRouter);
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', service: 'user-service' });
+});
+
+mongoose.connect(`${config.database.url}/astralbd-users`)
+  .then(() => logger.info('User service connected to MongoDB'))
+  .catch(err => logger.error('MongoDB connection error:', err));
+
+const PORT = 3001;
+
+app.listen(PORT, () => {
+  logger.info(`User service running on port ${PORT}`);
+});

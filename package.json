@@ -1,0 +1,30 @@
+{
+  "name": "microservices-backend",
+  "version": "1.0.0",
+  "description": "Microservices backend with Node.js, Express, Mongoose and TypeScript",
+  "scripts": {
+    "dev:gateway": "cd api-gateway && npm run dev",
+    "dev:user": "cd user-service && npm run dev",
+    "dev:product": "cd product-service && npm run dev",
+    "dev:order": "cd order-service && npm run dev",
+    "dev:all": "concurrently \"npm run dev:user\" \"npm run dev:product\" \"npm run dev:order\" \"npm run dev:gateway\"",
+    "build:all": "concurrently \"cd user-service && npm run build\" \"cd product-service && npm run build\" \"cd order-service && npm run build\" \"cd api-gateway && npm run build\"",
+    "start:all": "concurrently \"cd user-service && npm start\" \"cd product-service && npm start\" \"cd order-service && npm start\" \"cd api-gateway && npm start\""
+  },
+  "keywords": [],
+  "author": "MD.Anis Molla",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.20.0",
+    "winston": "^3.18.3"
+  }
+}
