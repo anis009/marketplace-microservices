@@ -19,3 +19,45 @@
 {"level":"info","message":"User service connected to MongoDB","timestamp":"2025-11-20T05:50:28.921Z"}
 {"level":"info","message":"User service running on port 3001","timestamp":"2025-11-20T05:54:08.587Z"}
 {"level":"info","message":"User service connected to MongoDB","timestamp":"2025-11-20T05:54:10.119Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:40:49.534Z"}
+{"level":"error","message":"MongoDB connection error: connect ECONNREFUSED 127.0.0.1:27017","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":null,"stale":false,"type":"Unknown"},"stack":"MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017\n    at _handleConnectionErrors (/home/greenosoft/greenosoft/microservices-backend/user-service/node_modules/mongoose/lib/connection.js:816:11)\n    at NativeConnection.openUri (/home/greenosoft/greenosoft/microservices-backend/user-service/node_modules/mongoose/lib/connection.js:791:11)","timestamp":"2025-12-02T04:41:19.534Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:41:29.106Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:41:30.213Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:42:44.062Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:42:44.718Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:42:45.822Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:42:46.682Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:42:50.044Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:42:50.665Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:42:51.563Z"}
+{"_message":"User validation failed","errors":{"name":{"kind":"required","message":"Path `name` is required.","name":"ValidatorError","path":"name","properties":{"message":"Path `name` is required.","path":"name","type":"required"}}},"level":"error","message":"Registration error: User validation failed: name: Path `name` is required.","stack":"ValidationError: User validation failed: name: Path `name` is required.\n    at model.Document.invalidate (/home/greenosoft/greenosoft/microservices-backend/user-service/node_modules/mongoose/lib/document.js:3219:32)\n    at /home/greenosoft/greenosoft/microservices-backend/user-service/node_modules/mongoose/lib/document.js:3012:17\n    at /home/greenosoft/greenosoft/microservices-backend/user-service/node_modules/mongoose/lib/schematype.js:1368:9\n    at processTicksAndRejections (node:internal/process/task_queues:77:11)","timestamp":"2025-12-02T04:48:48.689Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:53:48.669Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:53:49.752Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:54:36.995Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:54:38.988Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:54:41.937Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:54:43.247Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:55:31.446Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:55:32.575Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:55:37.144Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:55:38.009Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:57:36.629Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T04:57:37.473Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T04:57:38.704Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:05:32.438Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T05:05:33.527Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:07:03.701Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:07:04.827Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T05:07:05.665Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:07:35.449Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T05:07:36.324Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:07:55.849Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T05:07:56.752Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:08:24.701Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T05:08:25.667Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:09:33.552Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T05:09:35.939Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:09:36.545Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T05:09:37.426Z"}
+{"level":"info","message":"User service running on port 3001","timestamp":"2025-12-02T05:12:12.298Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2025-12-02T05:12:13.295Z"}

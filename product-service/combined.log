@@ -1,2 +1,29 @@
 {"level":"info","message":"Product service running on port 3002","timestamp":"2025-11-20T06:06:36.785Z"}
 {"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-11-20T06:06:38.178Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-11-20T07:26:55.452Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-11-20T07:26:56.711Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T04:40:49.526Z"}
+{"level":"error","message":"MongoDB connection error: connect ECONNREFUSED 127.0.0.1:27017","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":null,"stale":false,"type":"Unknown"},"stack":"MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017\n    at _handleConnectionErrors (/home/greenosoft/greenosoft/microservices-backend/product-service/node_modules/mongoose/lib/connection.js:816:11)\n    at NativeConnection.openUri (/home/greenosoft/greenosoft/microservices-backend/product-service/node_modules/mongoose/lib/connection.js:791:11)","timestamp":"2025-12-02T04:41:19.530Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T04:41:29.200Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T04:41:30.236Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T04:42:46.460Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T04:42:47.347Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T04:57:52.497Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T04:57:53.592Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T04:57:54.388Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:05:32.445Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T05:05:33.538Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:07:05.762Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:07:06.841Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T05:07:07.695Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:07:35.456Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T05:07:36.333Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:07:55.857Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T05:07:56.727Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:08:46.571Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T05:08:47.474Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:09:37.128Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:09:39.220Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T05:09:40.114Z"}
+{"level":"info","message":"Product service running on port 3002","timestamp":"2025-12-02T05:12:12.323Z"}
+{"level":"info","message":"Product service connected to MongoDB","timestamp":"2025-12-02T05:12:13.294Z"}

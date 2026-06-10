@@ -4,3 +4,29 @@
 {"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-11-20T06:50:26.386Z"}
 {"level":"info","message":"Order service running on port 3003","timestamp":"2025-11-20T06:58:16.074Z"}
 {"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-11-20T06:58:17.758Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T04:40:49.564Z"}
+{"level":"error","message":"MongoDB connection error: connect ECONNREFUSED 127.0.0.1:27017","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":null,"stale":false,"type":"Unknown"},"stack":"MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017\n    at _handleConnectionErrors (/home/greenosoft/greenosoft/microservices-backend/order-service/node_modules/mongoose/lib/connection.js:816:11)\n    at NativeConnection.openUri (/home/greenosoft/greenosoft/microservices-backend/order-service/node_modules/mongoose/lib/connection.js:791:11)","timestamp":"2025-12-02T04:41:19.565Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T04:41:29.143Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T04:41:30.209Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T04:42:47.290Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T04:42:48.257Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T04:58:07.897Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T04:58:08.935Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T04:58:09.774Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:05:32.467Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T05:05:33.646Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:07:07.839Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:07:08.926Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T05:07:09.801Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:07:35.481Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T05:07:36.304Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:07:55.918Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T05:07:56.792Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:08:46.603Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T05:08:47.500Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:09:30.636Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T05:09:31.636Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:09:38.028Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T05:09:38.896Z"}
+{"level":"info","message":"Order service running on port 3003","timestamp":"2025-12-02T05:12:12.332Z"}
+{"level":"info","message":"Order service connected to MongoDB","timestamp":"2025-12-02T05:12:13.295Z"}

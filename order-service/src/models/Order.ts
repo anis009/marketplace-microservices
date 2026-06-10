@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { IOrder, IOrderItem, IShippingAddress } from '../../../shared/types';
+import { IOrder, IOrderItem, IShippingAddress } from '../shared/types';
 
 const orderItemSchema: Schema = new mongoose.Schema({
   productId: {

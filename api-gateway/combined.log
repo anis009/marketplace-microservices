@@ -1,2 +1,15 @@
 {"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-11-20T07:03:44.988Z"}
 {"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-11-20T07:04:11.083Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T04:40:49.277Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T04:41:28.935Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T04:42:48.571Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:05:32.238Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:07:09.635Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:07:10.727Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:07:35.125Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:08:46.292Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:09:09.183Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:09:31.816Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:09:38.519Z"}
+{"level":"info","message":"API Gateway running on port 3000","timestamp":"2025-12-02T05:12:12.075Z"}
+{"level":"error","message":"Error: Cannot find / on this server","stack":"Error: Cannot find / on this server\n    at notFoundHandler (/home/greenosoft/greenosoft/microservices-backend/api-gateway/src/shared/middleware/errorHandler.ts:99:15)\n    at Layer.handle [as handle_request] (/home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/express/lib/router/index.js:328:13)\n    at /home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/express/lib/router/index.js:286:9\n    at Function.process_params (/home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/express/lib/router/index.js:346:12)\n    at next (/home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/express/lib/router/index.js:280:10)\n    at jsonParser (/home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/body-parser/lib/types/json.js:113:7)\n    at Layer.handle [as handle_request] (/home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/express/lib/router/index.js:328:13)\n    at /home/greenosoft/greenosoft/microservices-backend/api-gateway/node_modules/express/lib/router/index.js:286:9","statusCode":404,"timestamp":"2025-12-02T05:52:22.449Z"}

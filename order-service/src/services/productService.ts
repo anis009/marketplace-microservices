@@ -1,6 +1,6 @@
 import axios from 'axios';
-import config from '../../../shared/config';
-import logger from '../../../shared/logger';
+import config from '../shared/config';
+import logger from '../shared/logger';
 
 export interface ProductData {
   id: string;

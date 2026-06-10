@@ -1,11 +1,16 @@
 import express, { Request, Response } from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import logger from '../../shared/logger';
-import config from '../../shared/config';
+import logger from './shared/logger';
+import config from './shared/config';
+import { errorHandler, notFoundHandler } from './shared/middleware/errorHandler';
 
 const app = express();
 
 app.use(express.json());
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', service: 'api-gateway' });
+});
 
 const userServiceProxy = createProxyMiddleware({
   target: config.services.user,
@@ -56,13 +61,11 @@ app.use('/api/v1/users', userServiceProxy);
 app.use('/api/v1/products', productServiceProxy);
 app.use('/api/v1/orders', orderServiceProxy);
 
-app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
-    service: 'api-gateway',
-    timestamp: new Date().toISOString()
-  });
-});
+// 404 handler - must be after all routes
+app.use(notFoundHandler);
+
+// Global error handler - must be last
+app.use(errorHandler);
 
 const PORT = 3000;
 

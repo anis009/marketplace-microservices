@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
-import { AuthRequest, ApiResponse } from '../../../shared/types';
-import config from '../../../shared/config';
-import logger from '../../../shared/logger';
+import { AuthRequest, ApiResponse } from '../shared/types';
+import config from '../shared/config';
+import logger from '../shared/logger';
 
 const signToken = (id: string): string => {
   return jwt.sign({ id }, config.jwt.secret, {

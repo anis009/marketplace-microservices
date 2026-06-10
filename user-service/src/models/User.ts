@@ -1,6 +1,6 @@
 import mongoose, {  Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { IUser } from '../../../shared/types';
+import { IUser } from '../shared/types';
 
 const userSchema: Schema = new mongoose.Schema({
   name: {

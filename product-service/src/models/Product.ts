@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { IProduct } from '../../../shared/types/index';
+import { IProduct } from '../shared/types/index';
 const productSchema: Schema = new mongoose.Schema({
   name: {
     type: String,

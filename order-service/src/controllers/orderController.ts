@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
 import Order from '../models/Order';
-import { ApiResponse, AuthRequest } from '../../../shared/types';
-import logger from '../../../shared/logger';
+import { ApiResponse, AuthRequest } from '../shared/types';
+import logger from '../shared/logger';
 import { getProductsByIds } from '../services/productService';
 import { getUserById } from '../services/userService';
 

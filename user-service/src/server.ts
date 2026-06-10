@@ -3,8 +3,9 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
 import { userRouter } from './routes/userRoutes';
-import config from '../../shared/config';
-import logger from '../../shared/logger';
+import config from './shared/config';
+import logger from './shared/logger';
+import { errorHandler, notFoundHandler } from './shared/middleware/errorHandler';
 
 const app = express();
 
@@ -12,11 +13,17 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/v1/users', userRouter);
-
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', service: 'user-service' });
 });
+
+app.use('/api/users', userRouter);
+
+// 404 handler - must be after all routes
+app.use(notFoundHandler);
+
+// Global error handler - must be last
+app.use(errorHandler);
 
 mongoose.connect(`${config.database.url}/astralbd-users`)
   .then(() => logger.info('User service connected to MongoDB'))

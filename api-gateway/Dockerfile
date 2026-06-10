@@ -8,8 +8,7 @@ COPY api-gateway/package*.json ./
 # Install production dependencies
 RUN npm ci --only=production
 
-# Copy shared folder and service code
-COPY shared /app/shared
+# Copy service code (includes shared folder)
 COPY api-gateway/src ./src
 
 # Expose port

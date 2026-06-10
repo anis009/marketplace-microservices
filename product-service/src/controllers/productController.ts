@@ -1,7 +1,7 @@
 import { Response,Request } from 'express';
 import Product from '../models/Product';
-import {  ApiResponse, PaginatedResponse } from '../../../shared/types';
-import logger from '../../../shared/logger';
+import {  ApiResponse, PaginatedResponse } from '../shared/types';
+import logger from '../shared/logger';
 
 export const getAllProducts = async (req: Request, res: Response): Promise<void> => {
   try {

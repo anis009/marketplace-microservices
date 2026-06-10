@@ -10,8 +10,7 @@ COPY user-service/tsconfig.json ./
 # Install ALL dependencies (including devDependencies for build)
 RUN npm ci
 
-# Copy shared folder and service source code
-COPY shared /app/shared
+# Copy service source code (includes shared folder)
 COPY user-service/src ./src
 
 # Build TypeScript
@@ -28,7 +27,6 @@ RUN npm ci --only=production
 
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/shared ./shared
 
 # Expose port
 EXPOSE 3001

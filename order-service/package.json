@@ -19,7 +19,8 @@
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.0",
-    "winston": "^3.10.0"
+    "winston": "^3.10.0",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.4",
