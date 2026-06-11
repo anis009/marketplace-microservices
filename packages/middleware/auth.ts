@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { AuthRequest } from '../types';
-import config from '../config';
-import logger from '../logger';
+import config from '../config/config';
+import logger from '../logger/logger';
 
 export const protect = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {

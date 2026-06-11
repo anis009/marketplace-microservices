@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Microservices backend with Node.js, Express, Mongoose and TypeScript",
   "scripts": {
-    "dev:gateway": "cd api-gateway && npm run dev",
-    "dev:user": "cd user-service && npm run dev",
-    "dev:product": "cd product-service && npm run dev",
-    "dev:order": "cd order-service && npm run dev",
+    "dev:gateway": "cd apps/api-gateway && npm run dev",
+    "dev:user": "cd apps/user-service && pnpm run dev",
+    "dev:product": "cd apps/product-service && npm run dev",
+    "dev:order": "cd apps/order-service && npm run dev",
     "dev:all": "concurrently \"npm run dev:user\" \"npm run dev:product\" \"npm run dev:order\" \"npm run dev:gateway\"",
-    "build:all": "concurrently \"cd user-service && npm run build\" \"cd product-service && npm run build\" \"cd order-service && npm run build\" \"cd api-gateway && npm run build\"",
-    "start:all": "concurrently \"cd user-service && npm start\" \"cd product-service && npm start\" \"cd order-service && npm start\" \"cd api-gateway && npm start\""
+    "build:all": "concurrently \"cd apps/user-service && npm run build\" \"cd apps/product-service && npm run build\" \"cd apps/order-service && npm run build\" \"cd apps/api-gateway && npm run build\"",
+    "start:all": "concurrently \"cd apps/user-service && npm start\" \"cd apps/product-service && npm start\" \"cd apps/order-service && npm start\" \"cd apps/api-gateway && npm start\""
   },
   "keywords": [],
   "author": "MD.Anis Molla",
@@ -26,5 +26,6 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.20.0",
     "winston": "^3.18.3"
-  }
+  },
+  "packageManager": "pnpm@11.5.2+sha512.71c631e382066efc25625d5cf029075de07b61b37f6e27350fbd84b1bda5864c8c1967adc280776b45c30a715c0359a3be08fef42d5bb09e2b99029979692916"
 }

@@ -16,8 +16,11 @@ app.use(express.json());
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', service: 'user-service' });
 });
-
 app.use('/api/users', userRouter);
+app.get('/', (req, res) => {
+  res.json({ status: 'OK', service: 'user-service' });
+});
+
 
 // 404 handler - must be after all routes
 app.use(notFoundHandler);
