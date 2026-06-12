@@ -1,10 +1,11 @@
 import { Document, ObjectId, Types } from 'mongoose';
+import { Role } from '../config/roles.config';
 
 export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-  role: 'user' | 'admin';
+  role: Role;
   correctPassword(candidatePassword: string, userPassword: string): Promise<boolean>;
   createdAt: Date;
   updatedAt: Date;

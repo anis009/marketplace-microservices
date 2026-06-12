@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { VALID_ROLES, Role } from '../shared/config/roles.config';
 
 // Password validation: min 8 chars, 1 uppercase, 1 lowercase, 1 number
 const passwordSchema = z
@@ -22,6 +23,9 @@ const nameSchema = z
   .max(50, 'Name must not exceed 50 characters')
   .trim();
 
+// Role validation — uses centralized roles
+const roleEnum = z.enum(VALID_ROLES as [Role, ...Role[]]);
+
 // Register schema
 export const registerSchema = z.object({
   name: nameSchema,
@@ -42,13 +46,25 @@ export const updateUserSchema = z.object({
   password: passwordSchema.optional(),
 });
 
+// Update role schema — only valid roles from centralized config
+export const updateRoleSchema = z.object({
+  role: roleEnum,
+});
+
 // MongoDB ObjectId validation
 export const mongoIdSchema = z.object({
   id: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid user ID'),
+});
+
+// List users query params
+export const listUsersQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).default(1).optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(20).optional(),
 });
 
 // Export types
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
 export type UpdateUserInput = z.infer<typeof updateUserSchema>;
+export type UpdateRoleInput = z.infer<typeof updateRoleSchema>;
 export type MongoIdInput = z.infer<typeof mongoIdSchema>;

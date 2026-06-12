@@ -1,6 +1,7 @@
 import mongoose, {  Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { IUser } from '../shared/types';
+import { VALID_ROLES } from '../shared/config/roles.config';
 
 const userSchema: Schema = new mongoose.Schema({
   name: {
@@ -21,8 +22,8 @@ const userSchema: Schema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['user', 'admin','seller','super-admin'],
-    default: 'user'
+    enum: VALID_ROLES,
+    default: 'customer'
   }
 }, {
   timestamps: true
