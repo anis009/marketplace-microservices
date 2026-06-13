@@ -1,7 +1,7 @@
 import mongoose, {  Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { IUser } from '../shared/types';
-import { VALID_ROLES } from '../shared/config/roles.config';
+import { IUser } from '../types';
+import { VALID_ROLES } from '../constants/roles';
 
 const userSchema: Schema = new mongoose.Schema({
   name: {

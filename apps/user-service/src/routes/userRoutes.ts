@@ -8,10 +8,10 @@ import {
   updateUserRole,
   getAllUsers,
 } from '../controllers/userController';
-import { protect, restrictTo } from '../shared/middleware/auth';
-import { validate } from '../shared/middleware/validate';
-import { registerSchema, loginSchema, updateRoleSchema, listUsersQuerySchema } from '../validations/user.validation';
-import { ROLES } from '../shared/config/roles.config';
+import { protect, restrictTo } from '../middleware/auth';
+import { validate } from '../middleware/validate';
+import { registerSchema, loginSchema, updateRoleSchema, listUsersQuerySchema } from '../validators/user.validation';
+import { ROLES } from '../constants/roles';
 
 const router = express.Router();
 

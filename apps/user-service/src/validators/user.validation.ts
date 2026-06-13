@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { VALID_ROLES, Role } from '../shared/config/roles.config';
+import { VALID_ROLES, Role } from '../constants/roles';
 
 // Password validation: min 8 chars, 1 uppercase, 1 lowercase, 1 number
 const passwordSchema = z

@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import User from '../../models/User';
 import { AuthRequest } from '../types';
 import config from '../config';
-import logger from '../logger';
-import { Role, hasHigherPrivilege } from '../config/roles.config';
+import logger from '../utils/logger';
+import { Role, hasHigherPrivilege } from '../constants/roles';
+import { findUserByIdWithoutPassword } from '../repositories/userRepository';
+import { sendError } from '../utils/response';
 
 // JWT-based auth: verifies token → fetches full user → attaches to request
 export const protect = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -16,9 +17,9 @@ export const protect = async (req: Request, res: Response, next: NextFunction): 
     }
 
     if (!token) {
-      res.status(401).json({
-        status: 'error',
-        message: 'You are not logged in'
+      sendError(res, {
+        statusCode: 401,
+        message: 'You are not logged in',
       });
       return;
     }
@@ -26,11 +27,11 @@ export const protect = async (req: Request, res: Response, next: NextFunction): 
     const decoded = jwt.verify(token, config.jwt.secret) as { id: string };
     
     // Fetch the full user from DB to get current role (handles role changes after login)
-    const user = await User.findById(decoded.id).select('-password');
+    const user = await findUserByIdWithoutPassword(decoded.id);
     if (!user) {
-      res.status(401).json({
-        status: 'error',
-        message: 'User no longer exists'
+      sendError(res, {
+        statusCode: 401,
+        message: 'User no longer exists',
       });
       return;
     }
@@ -40,9 +41,9 @@ export const protect = async (req: Request, res: Response, next: NextFunction): 
     next();
   } catch (error) {
     logger.error('Auth middleware error:', error);
-    res.status(401).json({
-      status: 'error',
-      message: 'Invalid token'
+    sendError(res, {
+      statusCode: 401,
+      message: 'Invalid token',
     });
   }
 };
@@ -61,9 +62,9 @@ export const restrictTo = (...allowedRoles: Role[]) => {
     const authReq = req as AuthRequest;
 
     if (!authReq.user) {
-      res.status(401).json({
-        status: 'error',
-        message: 'Authentication required'
+      sendError(res, {
+        statusCode: 401,
+        message: 'Authentication required',
       });
       return;
     }
@@ -76,9 +77,9 @@ export const restrictTo = (...allowedRoles: Role[]) => {
     });
 
     if (!isAllowed) {
-      res.status(403).json({
-        status: 'error',
-        message: `Access denied. Required role: ${allowedRoles.join(' or ')}`
+      sendError(res, {
+        statusCode: 403,
+        message: `Access denied. Required role: ${allowedRoles.join(' or ')}`,
       });
       return;
     }

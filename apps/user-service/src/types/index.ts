@@ -1,5 +1,5 @@
 import { Document, ObjectId, Types } from 'mongoose';
-import { Role } from '../config/roles.config';
+import { Role } from '../constants/roles';
 
 export interface IUser extends Document {
   name: string;
@@ -62,14 +62,21 @@ export interface AuthRequest {
 }
 
 export interface ApiResponse<T = any> {
+  success: boolean;
   status: 'success' | 'error';
-  message?: string;
+  message: string;
   data?: T;
+  error?: {
+    statusCode: number;
+    details?: unknown;
+    stack?: string;
+  };
 }
 
 export interface PaginatedResponse<T = any> {
+  success: boolean;
   status: 'success' | 'error';
-  message?: string;
+  message: string;
   data: {
     items: T[];
     totalPages: number;

@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import { ZodObject, ZodRawShape } from 'zod';
+import { sendError } from '../utils/response';
 
 export const validate = <T extends ZodRawShape>(
   schema: ZodObject<T>,
@@ -10,9 +11,10 @@ export const validate = <T extends ZodRawShape>(
     const parsed = schema.safeParse(data);
 
     if (!parsed.success) {
-      res.status(400).json({
-        success: false,
-        errors: parsed.error.flatten().fieldErrors,
+      sendError(res, {
+        statusCode: 400,
+        message: 'Validation failed',
+        details: parsed.error.flatten().fieldErrors,
       });
       return;
     }

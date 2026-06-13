@@ -24,8 +24,7 @@
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
     "paths": {
-      "@/*": ["./src/*"],
-      "@shared/*": ["./src/shared/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

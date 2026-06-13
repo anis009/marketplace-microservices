@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
-import logger from '../logger';
+import logger from '../utils/logger';
+import { sendError } from '../utils/response';
 
 // Custom error class
 export class AppError extends Error {
@@ -13,17 +14,6 @@ export class AppError extends Error {
     this.isOperational = true;
     Error.captureStackTrace(this, this.constructor);
   }
-}
-
-// Error response interface
-interface ErrorResponse {
-  success: false;
-  error: {
-    message: string;
-    statusCode: number;
-    errors?: any;
-    stack?: string;
-  };
 }
 
 // Handle Mongoose validation errors
@@ -71,39 +61,29 @@ const handleZodError = (err: ZodError): AppError => {
 
 // Send error response in development
 const sendErrorDev = (err: any, res: Response): void => {
-  const response: ErrorResponse = {
-    success: false,
-    error: {
-      message: err.message,
-      statusCode: err.statusCode || 500,
-      errors: err.errors || undefined,
-      stack: err.stack,
-    },
-  };
-
   logger.error('Error:', {
     message: err.message,
     stack: err.stack,
     statusCode: err.statusCode,
   });
 
-  res.status(err.statusCode || 500).json(response);
+  sendError(res, {
+    statusCode: err.statusCode || 500,
+    message: err.message,
+    details: err.errors || undefined,
+    stack: err.stack,
+  });
 };
 
 // Send error response in production
 const sendErrorProd = (err: any, res: Response): void => {
   // Operational, trusted error: send message to client
   if (err.isOperational) {
-    const response: ErrorResponse = {
-      success: false,
-      error: {
-        message: err.message,
-        statusCode: err.statusCode,
-        errors: err.errors || undefined,
-      },
-    };
-
-    res.status(err.statusCode).json(response);
+    sendError(res, {
+      statusCode: err.statusCode,
+      message: err.message,
+      details: err.errors || undefined,
+    });
   } 
   // Programming or unknown error: don't leak error details
   else {
@@ -112,15 +92,10 @@ const sendErrorProd = (err: any, res: Response): void => {
       stack: err.stack,
     });
 
-    const response: ErrorResponse = {
-      success: false,
-      error: {
-        message: 'Something went wrong. Please try again later.',
-        statusCode: 500,
-      },
-    };
-
-    res.status(500).json(response);
+    sendError(res, {
+      statusCode: 500,
+      message: 'Something went wrong. Please try again later.',
+    });
   }
 };
 
