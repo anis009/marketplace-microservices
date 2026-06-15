@@ -24,6 +24,15 @@ const userSchema: Schema = new mongoose.Schema({
     type: String,
     enum: VALID_ROLES,
     default: 'customer'
+  },
+  lastLogin: {
+    type: Date,
+    default: null
+  },
+  avatar: {
+    type: String,
+    trim: true,
+    default: null
   }
 }, {
   timestamps: true

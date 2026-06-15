@@ -23,6 +23,12 @@ const nameSchema = z
   .max(50, 'Name must not exceed 50 characters')
   .trim();
 
+const avatarSchema = z
+  .string()
+  .url('Avatar must be a valid URL')
+  .max(500, 'Avatar URL must not exceed 500 characters')
+  .nullable();
+
 // Role validation — uses centralized roles
 const roleEnum = z.enum(VALID_ROLES as [Role, ...Role[]]);
 
@@ -31,6 +37,7 @@ export const registerSchema = z.object({
   name: nameSchema,
   email: emailSchema,
   password: passwordSchema,
+  avatar: avatarSchema.optional(),
 });
 
 // Login schema
@@ -44,6 +51,7 @@ export const updateUserSchema = z.object({
   name: nameSchema.optional(),
   email: emailSchema.optional(),
   password: passwordSchema.optional(),
+  avatar: avatarSchema.optional(),
 });
 
 // Update role schema — only valid roles from centralized config

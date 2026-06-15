@@ -6,6 +6,8 @@ export interface IUser extends Document {
   email: string;
   password: string;
   role: Role;
+  lastLogin?: Date | null;
+  avatar?: string | null;
   correctPassword(candidatePassword: string, userPassword: string): Promise<boolean>;
   createdAt: Date;
   updatedAt: Date;

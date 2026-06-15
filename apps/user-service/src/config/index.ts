@@ -1,31 +1,41 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-// Load .env file from project root
-const envPath = path.resolve(__dirname, '../../.env');
-console.log('Loading .env from:', envPath);
+const rootEnvPath = path.resolve(__dirname, '../../../..', '.env');
+const serviceEnvPath = path.resolve(__dirname, '../..', '.env');
 
-const result = dotenv.config({ path: envPath });
+dotenv.config({ path: rootEnvPath });
+dotenv.config({ path: serviceEnvPath });
 
-if (result.error) {
-  console.error('Error loading .env file:', result.error);
- 
-  dotenv.config();
-} else {
-  console.log('.env file loaded successfully');
-}
+const defaultDatabaseName = 'astralbd-users';
 
-console.log('MONGODB_URL:', process.env.MONGODB_URL);
-console.log('JWT_SECRET:', process.env.JWT_SECRET ? '***' : 'not set');
+const buildMongoUri = (baseUrl: string, databaseName: string): string => {
+  try {
+    const url = new URL(baseUrl);
+    url.pathname = `/${databaseName}`;
+    return url.toString();
+  } catch {
+    throw new Error('Invalid MONGODB_URL. Check the value in your .env file.');
+  }
+};
+
+const mongoBaseUrl = process.env.MONGODB_URL || 'mongodb://localhost:27017';
+const mongoDatabaseName = process.env.MONGODB_DATABASE || defaultDatabaseName;
+const accessTokenSecret = process.env.JWT_ACCESS_SECRET || process.env.JWT_SECRET || 'fallback-secret-key';
 
 const config = {
   port: process.env.PORT || 3000,
   database: {
-    url: process.env.MONGODB_URL || 'mongodb://localhost:27017'
+    url: mongoBaseUrl,
+    name: mongoDatabaseName,
+    uri: buildMongoUri(mongoBaseUrl, mongoDatabaseName)
   },
   jwt: {
-    secret: process.env.JWT_SECRET || 'fallback-secret-key',
-    expiresIn: '24h'
+    secret: accessTokenSecret,
+    accessSecret: accessTokenSecret,
+    refreshSecret: process.env.JWT_REFRESH_SECRET || 'fallback-refresh-secret-key',
+    accessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || process.env.JWT_EXPIRES_IN || process.env.expiresIn || '15m',
+    refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
   },
   services: {
     user: process.env.USER_SERVICE_URL || 'http://localhost:3001',

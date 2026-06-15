@@ -19,11 +19,17 @@ const nameSchema = zod_1.z
     .min(2, 'Name must be at least 2 characters')
     .max(50, 'Name must not exceed 50 characters')
     .trim();
+const avatarSchema = zod_1.z
+    .string()
+    .url('Avatar must be a valid URL')
+    .max(500, 'Avatar URL must not exceed 500 characters')
+    .nullable();
 const roleEnum = zod_1.z.enum(roles_1.VALID_ROLES);
 exports.registerSchema = zod_1.z.object({
     name: nameSchema,
     email: emailSchema,
     password: passwordSchema,
+    avatar: avatarSchema.optional(),
 });
 exports.loginSchema = zod_1.z.object({
     email: emailSchema,
@@ -33,6 +39,7 @@ exports.updateUserSchema = zod_1.z.object({
     name: nameSchema.optional(),
     email: emailSchema.optional(),
     password: passwordSchema.optional(),
+    avatar: avatarSchema.optional(),
 });
 exports.updateRoleSchema = zod_1.z.object({
     role: roleEnum,

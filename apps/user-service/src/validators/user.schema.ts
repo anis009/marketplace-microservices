@@ -4,6 +4,7 @@ export const userRegisterSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   password: z.string().min(6),
+  avatar: z.string().url().max(500).nullable().optional(),
 });
 
 // TypeScript type auto-generated

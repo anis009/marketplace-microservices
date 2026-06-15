@@ -5,12 +5,13 @@ import {
   login,
   register,
   getRoles,
+  updateUser,
   updateUserRole,
   getAllUsers,
 } from '../controllers/userController';
 import { protect, restrictTo } from '../middleware/auth';
 import { validate } from '../middleware/validate';
-import { registerSchema, loginSchema, updateRoleSchema, listUsersQuerySchema } from '../validators/user.validation';
+import { registerSchema, loginSchema, updateUserSchema, updateRoleSchema, listUsersQuerySchema } from '../validators/user.validation';
 import { ROLES } from '../constants/roles';
 
 const router = express.Router();
@@ -23,6 +24,7 @@ router.post('/login', validate(loginSchema), login as unknown as RequestHandler)
 router.get('/roles', protect as unknown as RequestHandler, getRoles as unknown as RequestHandler);
 router.get('/', protect as unknown as RequestHandler, restrictTo(ROLES.ADMIN, ROLES.SUPER_ADMIN) as unknown as RequestHandler, validate(listUsersQuerySchema, 'query'), getAllUsers as unknown as RequestHandler);
 router.get('/:id', protect as unknown as RequestHandler, getUser as unknown as RequestHandler);
+router.patch('/:id', protect as unknown as RequestHandler, validate(updateUserSchema), updateUser as unknown as RequestHandler);
 
 // Role management (admin / super-admin only)
 router.patch('/:id/role', protect as unknown as RequestHandler, restrictTo(ROLES.ADMIN, ROLES.SUPER_ADMIN) as unknown as RequestHandler, validate(updateRoleSchema), updateUserRole as unknown as RequestHandler);

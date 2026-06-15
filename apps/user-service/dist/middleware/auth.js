@@ -24,6 +24,13 @@ const protect = async (req, res, next) => {
             return;
         }
         const decoded = jsonwebtoken_1.default.verify(token, config_1.default.jwt.secret);
+        if (decoded.type === 'refresh') {
+            (0, response_1.sendError)(res, {
+                statusCode: 401,
+                message: 'Invalid token',
+            });
+            return;
+        }
         const user = await (0, userRepository_1.findUserByIdWithoutPassword)(decoded.id);
         if (!user) {
             (0, response_1.sendError)(res, {

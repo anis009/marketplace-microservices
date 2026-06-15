@@ -16,6 +16,7 @@ router.post('/login', (0, validate_1.validate)(user_validation_1.loginSchema), u
 router.get('/roles', auth_1.protect, userController_1.getRoles);
 router.get('/', auth_1.protect, (0, auth_1.restrictTo)(roles_1.ROLES.ADMIN, roles_1.ROLES.SUPER_ADMIN), (0, validate_1.validate)(user_validation_1.listUsersQuerySchema, 'query'), userController_1.getAllUsers);
 router.get('/:id', auth_1.protect, userController_1.getUser);
+router.patch('/:id', auth_1.protect, (0, validate_1.validate)(user_validation_1.updateUserSchema), userController_1.updateUser);
 router.patch('/:id/role', auth_1.protect, (0, auth_1.restrictTo)(roles_1.ROLES.ADMIN, roles_1.ROLES.SUPER_ADMIN), (0, validate_1.validate)(user_validation_1.updateRoleSchema), userController_1.updateUserRole);
 exports.userRouter = router;
 //# sourceMappingURL=userRoutes.js.map

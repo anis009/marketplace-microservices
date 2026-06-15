@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUsers = exports.updateUserRole = exports.getRoles = exports.getUser = exports.login = exports.register = void 0;
+exports.getAllUsers = exports.updateUserRole = exports.getRoles = exports.updateUser = exports.getUser = exports.login = exports.register = void 0;
 const logger_1 = __importDefault(require("../utils/logger"));
 const response_1 = require("../utils/response");
 const userService_1 = require("../services/userService");
@@ -23,11 +23,12 @@ const sendControllerError = (res, logMessage, error) => {
 };
 const register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, avatar } = req.body;
         const data = await (0, userService_1.registerUser)({
             name,
             email,
             password,
+            avatar,
         });
         (0, response_1.sendSuccess)(res, {
             statusCode: 201,
@@ -71,6 +72,32 @@ const getUser = async (req, res) => {
     }
 };
 exports.getUser = getUser;
+const updateUser = async (req, res) => {
+    try {
+        const authReq = req;
+        const targetUserId = req.params.id;
+        if (!targetUserId) {
+            throw new userService_1.UserServiceError('User ID is required', 400);
+        }
+        const user = await (0, userService_1.updateUserProfileById)({
+            requesterId: authReq.user?._id?.toString(),
+            requesterRole: authReq.user?.role,
+            targetUserId,
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            avatar: req.body.avatar,
+        });
+        (0, response_1.sendSuccess)(res, {
+            message: 'User updated successfully',
+            data: { user },
+        });
+    }
+    catch (error) {
+        sendControllerError(res, 'Update user error:', error);
+    }
+};
+exports.updateUser = updateUser;
 const getRoles = async (req, res) => {
     try {
         (0, response_1.sendSuccess)(res, {

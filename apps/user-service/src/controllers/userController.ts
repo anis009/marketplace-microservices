@@ -8,6 +8,7 @@ import {
   loginUser,
   getUserById,
   getAvailableRoles,
+  updateUserProfileById,
   updateUserRoleById,
   getAllUsers as getAllUsersService,
 } from '../services/userService';
@@ -32,11 +33,12 @@ const sendControllerError = (res: Response, logMessage: string, error: unknown):
 
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, avatar } = req.body;
     const data = await registerUser({
       name,
       email,
       password,
+      avatar,
     });
 
     sendSuccess(res, {
@@ -78,6 +80,33 @@ export const getUser = async (req: Request, res: Response): Promise<void> => {
     });
   } catch (error) {
     sendControllerError(res, 'Get user error:', error);
+  }
+};
+
+export const updateUser = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const authReq = req as AuthRequest;
+    const targetUserId = req.params.id;
+    if (!targetUserId) {
+      throw new UserServiceError('User ID is required', 400);
+    }
+
+    const user = await updateUserProfileById({
+      requesterId: authReq.user?._id?.toString(),
+      requesterRole: authReq.user?.role as Role | undefined,
+      targetUserId,
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      avatar: req.body.avatar,
+    });
+
+    sendSuccess(res, {
+      message: 'User updated successfully',
+      data: { user },
+    });
+  } catch (error) {
+    sendControllerError(res, 'Update user error:', error);
   }
 };
 

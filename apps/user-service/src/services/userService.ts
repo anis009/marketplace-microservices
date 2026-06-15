@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import config from '../config';
 import logger from '../utils/logger';
 import {
@@ -9,7 +9,9 @@ import {
   findUserByEmailWithPassword,
   findUserById,
   findUserByIdWithoutPassword,
+  saveUserLastLogin,
   saveUserRole,
+  updateUserById,
 } from '../repositories/userRepository';
 import {
   Role,
@@ -32,6 +34,7 @@ interface RegisterUserInput {
   name: string;
   email: string;
   password: string;
+  avatar?: string | null;
 }
 
 interface LoginUserInput {
@@ -46,15 +49,46 @@ interface UpdateUserRoleInput {
   newRole: Role;
 }
 
+interface UpdateUserInput {
+  requesterId?: string;
+  requesterRole?: Role;
+  targetUserId: string;
+  name?: string;
+  email?: string;
+  password?: string;
+  avatar?: string | null;
+}
+
 interface GetAllUsersInput {
   page: number;
   limit: number;
 }
 
-const signToken = (id: string): string => {
-  return jwt.sign({ id }, config.jwt.secret, {
-    expiresIn: '24h',
+const signAccessToken = (id: string): string => {
+  const options: SignOptions = {
+    expiresIn: config.jwt.accessExpiresIn as SignOptions['expiresIn'],
+  };
+
+  return jwt.sign({ id, type: 'access' }, config.jwt.accessSecret, {
+    ...options,
   });
+};
+
+const signRefreshToken = (id: string): string => {
+  const options: SignOptions = {
+    expiresIn: config.jwt.refreshExpiresIn as SignOptions['expiresIn'],
+  };
+
+  return jwt.sign({ id, type: 'refresh' }, config.jwt.refreshSecret, {
+    ...options,
+  });
+};
+
+const createAuthTokens = (id: string) => {
+  return {
+    accessToken: signAccessToken(id),
+    refreshToken: signRefreshToken(id),
+  };
 };
 
 const toAuthUser = (user: any) => ({
@@ -62,9 +96,11 @@ const toAuthUser = (user: any) => ({
   name: user.name,
   email: user.email,
   role: user.role,
+  avatar: user.avatar ?? null,
+  lastLogin: user.lastLogin ?? null,
 });
 
-export const registerUser = async ({ name, email, password }: RegisterUserInput) => {
+export const registerUser = async ({ name, email, password, avatar }: RegisterUserInput) => {
   const existingUser = await findUserByEmail(email);
   if (existingUser) {
     throw new UserServiceError('User already exists with this email', 400);
@@ -74,11 +110,12 @@ export const registerUser = async ({ name, email, password }: RegisterUserInput)
     name,
     email,
     password,
+    avatar,
   });
 
   return {
     user: toAuthUser(user),
-    token: signToken(user._id.toString()),
+    ...createAuthTokens(user._id.toString()),
   };
 };
 
@@ -93,9 +130,11 @@ export const loginUser = async ({ email, password }: LoginUserInput) => {
     throw new UserServiceError('Incorrect email or password', 401);
   }
 
+  const updatedUser = await saveUserLastLogin(user);
+
   return {
-    user: toAuthUser(user),
-    token: signToken(user._id.toString()),
+    user: toAuthUser(updatedUser),
+    ...createAuthTokens(updatedUser._id.toString()),
   };
 };
 
@@ -110,6 +149,52 @@ export const getUserById = async (id: string) => {
 };
 
 export const getAvailableRoles = () => VALID_ROLES;
+
+export const updateUserProfileById = async ({
+  requesterId,
+  requesterRole,
+  targetUserId,
+  name,
+  email,
+  password,
+  avatar,
+}: UpdateUserInput) => {
+  if (!requesterId) {
+    throw new UserServiceError('Authentication required', 401);
+  }
+
+  const isSelf = requesterId === targetUserId;
+  const canManageUsers = requesterRole === ROLES.ADMIN || requesterRole === ROLES.SUPER_ADMIN;
+
+  if (!isSelf && !canManageUsers) {
+    throw new UserServiceError('You do not have permission to update this user', 403);
+  }
+
+  const hasUpdates = [name, email, password, avatar].some((value) => value !== undefined);
+  if (!hasUpdates) {
+    throw new UserServiceError('No update fields provided', 400);
+  }
+
+  if (email) {
+    const existingUser = await findUserByEmail(email);
+    if (existingUser && existingUser._id.toString() !== targetUserId) {
+      throw new UserServiceError('User already exists with this email', 400);
+    }
+  }
+
+  const updatedUser = await updateUserById(targetUserId, {
+    name,
+    email,
+    password,
+    avatar,
+  });
+
+  if (!updatedUser) {
+    throw new UserServiceError('User not found', 404);
+  }
+
+  return toAuthUser(updatedUser);
+};
 
 export const updateUserRoleById = async ({
   assignerId,

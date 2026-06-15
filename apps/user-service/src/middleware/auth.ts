@@ -24,7 +24,14 @@ export const protect = async (req: Request, res: Response, next: NextFunction): 
       return;
     }
 
-    const decoded = jwt.verify(token, config.jwt.secret) as { id: string };
+    const decoded = jwt.verify(token, config.jwt.secret) as { id: string; type?: string };
+    if (decoded.type === 'refresh') {
+      sendError(res, {
+        statusCode: 401,
+        message: 'Invalid token',
+      });
+      return;
+    }
     
     // Fetch the full user from DB to get current role (handles role changes after login)
     const user = await findUserByIdWithoutPassword(decoded.id);
