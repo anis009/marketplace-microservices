@@ -13,7 +13,7 @@ importers:
         version: 17.4.2
       express:
         specifier: ^5.1.0
-        version: 5.2.1
+        version: 5.2.1(supports-color@5.5.0)
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.3
@@ -81,7 +81,7 @@ importers:
     dependencies:
       axios:
         specifier: ^1.13.2
-        version: 1.17.0
+        version: 1.17.0(supports-color@5.5.0)
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
@@ -102,7 +102,7 @@ importers:
         version: 9.0.3
       mongoose:
         specifier: ^7.5.0
-        version: 7.8.9
+        version: 7.8.9(supports-color@5.5.0)
       winston:
         specifier: ^3.10.0
         version: 3.19.0
@@ -142,7 +142,7 @@ importers:
     dependencies:
       axios:
         specifier: ^1.5.0
-        version: 1.17.0
+        version: 1.17.0(supports-color@5.5.0)
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
@@ -163,7 +163,7 @@ importers:
         version: 9.0.3
       mongoose:
         specifier: ^7.5.0
-        version: 7.8.9
+        version: 7.8.9(supports-color@5.5.0)
       winston:
         specifier: ^3.10.0
         version: 3.19.0
@@ -203,10 +203,13 @@ importers:
     dependencies:
       axios:
         specifier: ^1.5.0
-        version: 1.17.0
+        version: 1.17.0(supports-color@5.5.0)
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
+      colors:
+        specifier: ^1.4.0
+        version: 1.4.0
       cors:
         specifier: ^2.8.5
         version: 2.8.6
@@ -224,7 +227,7 @@ importers:
         version: 9.0.3
       mongoose:
         specifier: ^7.5.0
-        version: 7.8.9
+        version: 7.8.9(supports-color@5.5.0)
       winston:
         specifier: ^3.10.0
         version: 3.19.0
@@ -505,6 +508,10 @@ packages:
   color@5.0.3:
     resolution: {integrity: sha512-ezmVcLR3xAVp8kYOm4GS45ZLLgIE6SPAFoduLr6hTDajwb3KZ2F46gulK3XpcwRFb5KKGCSezCBAY4Dw4HsyXA==}
     engines: {node: '>=18'}
+
+  colors@1.4.0:
+    resolution: {integrity: sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==}
+    engines: {node: '>=0.1.90'}
 
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
@@ -1505,7 +1512,7 @@ snapshots:
 
   acorn@8.16.0: {}
 
-  agent-base@6.0.2:
+  agent-base@6.0.2(supports-color@5.5.0):
     dependencies:
       debug: 4.4.3(supports-color@5.5.0)
     transitivePeerDependencies:
@@ -1530,11 +1537,11 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.17.0:
+  axios@1.17.0(supports-color@5.5.0):
     dependencies:
       follow-redirects: 1.16.0
       form-data: 4.0.5
-      https-proxy-agent: 5.0.1
+      https-proxy-agent: 5.0.1(supports-color@5.5.0)
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
       - debug
@@ -1563,7 +1570,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  body-parser@2.2.2:
+  body-parser@2.2.2(supports-color@5.5.0):
     dependencies:
       bytes: 3.1.2
       content-type: 1.0.5
@@ -1646,6 +1653,8 @@ snapshots:
     dependencies:
       color-convert: 3.1.3
       color-string: 2.1.4
+
+  colors@1.4.0: {}
 
   combined-stream@1.0.8:
     dependencies:
@@ -1782,10 +1791,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  express@5.2.1:
+  express@5.2.1(supports-color@5.5.0):
     dependencies:
       accepts: 2.0.0
-      body-parser: 2.2.2
+      body-parser: 2.2.2(supports-color@5.5.0)
       content-disposition: 1.1.0
       content-type: 1.0.5
       cookie: 0.7.2
@@ -1795,7 +1804,7 @@ snapshots:
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
-      finalhandler: 2.1.1
+      finalhandler: 2.1.1(supports-color@5.5.0)
       fresh: 2.0.0
       http-errors: 2.0.1
       merge-descriptors: 2.0.0
@@ -1806,8 +1815,8 @@ snapshots:
       proxy-addr: 2.0.7
       qs: 6.15.2
       range-parser: 1.2.1
-      router: 2.2.0
-      send: 1.2.1
+      router: 2.2.0(supports-color@5.5.0)
+      send: 1.2.1(supports-color@5.5.0)
       serve-static: 2.2.1
       statuses: 2.0.2
       type-is: 2.1.0
@@ -1833,7 +1842,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  finalhandler@2.1.1:
+  finalhandler@2.1.1(supports-color@5.5.0):
     dependencies:
       debug: 4.4.3(supports-color@5.5.0)
       encodeurl: 2.0.0
@@ -1937,9 +1946,9 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  https-proxy-agent@5.0.1:
+  https-proxy-agent@5.0.1(supports-color@5.5.0):
     dependencies:
-      agent-base: 6.0.2
+      agent-base: 6.0.2(supports-color@5.5.0)
       debug: 4.4.3(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
@@ -2102,13 +2111,13 @@ snapshots:
     optionalDependencies:
       socks: 2.8.9
 
-  mongoose@7.8.9:
+  mongoose@7.8.9(supports-color@5.5.0):
     dependencies:
       bson: 5.5.1
       kareem: 2.5.1
       mongodb: 5.9.2
       mpath: 0.9.0
-      mquery: 5.0.0
+      mquery: 5.0.0(supports-color@5.5.0)
       ms: 2.1.3
       sift: 16.0.1
     transitivePeerDependencies:
@@ -2125,7 +2134,7 @@ snapshots:
       kareem: 2.6.3
       mongodb: 6.20.0(socks@2.8.9)
       mpath: 0.9.0
-      mquery: 5.0.0
+      mquery: 5.0.0(supports-color@5.5.0)
       ms: 2.1.3
       sift: 17.1.3
     transitivePeerDependencies:
@@ -2140,7 +2149,7 @@ snapshots:
 
   mpath@0.9.0: {}
 
-  mquery@5.0.0:
+  mquery@5.0.0(supports-color@5.5.0):
     dependencies:
       debug: 4.4.3(supports-color@5.5.0)
     transitivePeerDependencies:
@@ -2238,7 +2247,7 @@ snapshots:
 
   requires-port@1.0.0: {}
 
-  router@2.2.0:
+  router@2.2.0(supports-color@5.5.0):
     dependencies:
       debug: 4.4.3(supports-color@5.5.0)
       depd: 2.0.0
@@ -2278,7 +2287,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  send@1.2.1:
+  send@1.2.1(supports-color@5.5.0):
     dependencies:
       debug: 4.4.3(supports-color@5.5.0)
       encodeurl: 2.0.0
@@ -2308,7 +2317,7 @@ snapshots:
       encodeurl: 2.0.0
       escape-html: 1.0.3
       parseurl: 1.3.3
-      send: 1.2.1
+      send: 1.2.1(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 

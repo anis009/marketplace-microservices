@@ -20,7 +20,14 @@ export const protect = async (req: Request, res: Response, next: NextFunction): 
       return;
     }
 
-    const decoded = jwt.verify(token, config.jwt.secret) as { id: string };
+    const decoded = jwt.verify(token, config.jwt.secret) as { id: string; type?: string };
+    if (decoded.type === 'refresh') {
+      res.status(401).json({
+        status: 'error',
+        message: 'Invalid token'
+      });
+      return;
+    }
     
     // In a real microservice, you would call the user service to verify the user
     // For now, we'll just attach the user ID to the request
