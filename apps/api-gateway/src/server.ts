@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import logger from './shared/logger';
 import config from './shared/config';
@@ -6,10 +6,17 @@ import { errorHandler, notFoundHandler } from './shared/middleware/errorHandler'
 
 const app = express();
 
-app.use(express.json());
-
+//TODO: Health Check
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', service: 'api-gateway' });
+});
+
+// Parse JSON only for non-proxied routes (proxy needs raw body stream)
+app.use((req: Request, res: Response, next: NextFunction) => {
+  if (req.path.startsWith('/api/v1/')) {
+    return next(); // Skip body parsing for proxied routes
+  }
+  express.json()(req, res, next);
 });
 
 const userServiceProxy = createProxyMiddleware({
@@ -33,7 +40,7 @@ const productServiceProxy = createProxyMiddleware({
   pathRewrite: {
     '^/api/v1/products': '/api/products'
   },
-  onError: (err, req:Request, res:Response) => {
+  onError: (err, req: Request, res: Response) => {
     logger.error('Product Service Error:', err);
     res.status(500).json({
       status: 'error',
@@ -48,7 +55,7 @@ const orderServiceProxy = createProxyMiddleware({
   pathRewrite: {
     '^/api/v1/orders': '/api/orders'
   },
-  onError: (err, req:Request, res:Response) => {
+  onError: (err, req: Request, res: Response) => {
     logger.error('Order Service Error:', err);
     res.status(500).json({
       status: 'error',
@@ -60,6 +67,8 @@ const orderServiceProxy = createProxyMiddleware({
 app.use('/api/v1/users', userServiceProxy);
 app.use('/api/v1/products', productServiceProxy);
 app.use('/api/v1/orders', orderServiceProxy);
+
+app.use(express.json());
 
 // 404 handler - must be after all routes
 app.use(notFoundHandler);

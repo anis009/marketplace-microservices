@@ -1,25 +1,11 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-// Load .env file from project root
-const envPath = path.resolve(__dirname, '../../../.env');
-console.log('Loading .env from:', envPath);
-
-const result = dotenv.config({ path: envPath });
-
-if (result.error) {
-  console.error('Error loading .env file:', result.error);
- 
-  dotenv.config();
-} else {
-  console.log('.env file loaded successfully');
-}
-
-console.log('MONGODB_URL:', process.env.MONGODB_URL);
-console.log('JWT_SECRET:', process.env.JWT_SECRET ? '***' : 'not set');
+// Load .env from monorepo root
+dotenv.config({ path: path.resolve(__dirname, '../../../..', '.env') });
 
 const config = {
-  port: process.env.PORT || 3000,
+  port: process.env.PRODUCT_SERVICE_PORT || process.env.PORT || 3002,
   database: {
     url: process.env.MONGODB_URL || 'mongodb://localhost:27017'
   },

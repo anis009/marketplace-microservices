@@ -1,11 +1,8 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-const rootEnvPath = path.resolve(__dirname, '../../../..', '.env');
-const serviceEnvPath = path.resolve(__dirname, '../..', '.env');
-
-dotenv.config({ path: rootEnvPath });
-dotenv.config({ path: serviceEnvPath });
+// Load .env from monorepo root
+dotenv.config({ path: path.resolve(__dirname, '../../../../.env') });
 
 const defaultDatabaseName = 'astralbd-users';
 
@@ -24,7 +21,7 @@ const mongoDatabaseName = process.env.MONGODB_DATABASE || defaultDatabaseName;
 const accessTokenSecret = process.env.JWT_ACCESS_SECRET || process.env.JWT_SECRET || 'fallback-secret-key';
 
 const config = {
-  port: process.env.PORT || 3000,
+  port: process.env.USER_SERVICE_PORT || process.env.PORT || 3001,
   database: {
     url: mongoBaseUrl,
     name: mongoDatabaseName,

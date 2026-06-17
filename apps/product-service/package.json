@@ -1,12 +1,12 @@
 {
-  "name": "user-service",
+  "name": "product-service",
   "version": "1.0.0",
   "type": "commonjs",
-  "description": "User management microservice",
+  "description": "Product management microservice",
   "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "nodemon --exec \"node -r ts-node/register\" src/server.ts",
+    "dev": "nodemon",
     "build": "tsc",
     "build:watch": "tsc --watch"
   },

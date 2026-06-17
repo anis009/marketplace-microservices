@@ -6,7 +6,7 @@
   "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "nodemon --exec \"node -r ts-node/register\" src/server.ts",
+    "dev": "nodemon",
     "build": "tsc",
     "build:watch": "tsc --watch"
   },
