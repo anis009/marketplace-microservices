@@ -256,8 +256,7 @@ export const getAllUsers = async ({ page, limit }: GetAllUsersInput) => {
   };
 };
 
-// ─── Seller Service Functions ──────────────────────────────────────────
-
+// TODO: seller service functions
 interface OnboardSellerInput {
   requesterId: string;
   requesterRole: Role;

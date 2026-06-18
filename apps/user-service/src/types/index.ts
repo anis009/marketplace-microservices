@@ -1,8 +1,7 @@
 import { Document, ObjectId, Types } from 'mongoose';
 import { Role } from '../constants/roles';
 
-//Seller Sub-Interfaces 
-
+// TODO: seller sub-interfaces
 export interface IBusinessAddress {
   street: string;
   city: string;
@@ -112,8 +111,7 @@ export interface ISellerProfile {
   suspendedAt?: Date | null;
 }
 
-// Core Interfaces
-
+// TODO: core interfaces
 export interface IUser extends Document {
   name: string;
   email: string;

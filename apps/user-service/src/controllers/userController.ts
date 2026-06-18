@@ -181,8 +181,7 @@ export const getAllUsers = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
-// ─── Seller Controller Functions ───────────────────────────────────────
-
+// TODO: seller controller functions
 /**
  * POST /api/users/seller/onboard — Onboard as a seller
  */
