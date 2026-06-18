@@ -12,12 +12,7 @@ app.get('/health', (req, res) => {
 });
 
 // Parse JSON only for non-proxied routes (proxy needs raw body stream)
-app.use((req: Request, res: Response, next: NextFunction) => {
-  if (req.path.startsWith('/api/v1/')) {
-    return next(); // Skip body parsing for proxied routes
-  }
-  express.json()(req, res, next);
-});
+
 
 const userServiceProxy = createProxyMiddleware({
   target: config.services.user,
@@ -73,7 +68,7 @@ app.use(express.json());
 // 404 handler - must be after all routes
 app.use(notFoundHandler);
 
-// Global error handler - must be last
+// Global error handler - must be lasts
 app.use(errorHandler);
 
 const PORT = 3000;
