@@ -79,3 +79,102 @@ export const findAllUsers = ({ skip, limit }: FindAllUsersInput) => {
 export const countUsers = () => {
   return User.countDocuments();
 };
+
+// TODO: seller-specific repository functions
+export const findSellerByStoreSlug = (storeSlug: string) => {
+  return User.findOne({
+    role: 'seller',
+    'sellerProfile.storeSettings.storeSlug': storeSlug,
+  }).select('-password');
+};
+
+export const findSellersByVerificationStatus = (
+  status: string,
+  skip: number,
+  limit: number
+) => {
+  return User.find({
+    role: 'seller',
+    'sellerProfile.verification.status': status,
+  })
+    .select('-password')
+    .skip(skip)
+    .limit(limit)
+    .sort({ createdAt: -1 });
+};
+
+export const countSellersByVerificationStatus = (status: string) => {
+  return User.countDocuments({
+    role: 'seller',
+    'sellerProfile.verification.status': status,
+  });
+};
+
+export const findAllSellers = (
+  skip: number,
+  limit: number,
+  filters?: {
+    status?: string;
+    search?: string;
+  }
+) => {
+  const query: Record<string, any> = { role: 'seller' };
+
+  if (filters?.status) {
+    query['sellerProfile.verification.status'] = filters.status;
+  }
+
+  if (filters?.search) {
+    query.$or = [
+      { name: { $regex: filters.search, $options: 'i' } },
+      { email: { $regex: filters.search, $options: 'i' } },
+      { 'sellerProfile.businessInfo.businessName': { $regex: filters.search, $options: 'i' } },
+      { 'sellerProfile.storeSettings.storeName': { $regex: filters.search, $options: 'i' } },
+    ];
+  }
+
+  return User.find(query)
+    .select('-password')
+    .skip(skip)
+    .limit(limit)
+    .sort({ createdAt: -1 });
+};
+
+export const countAllSellers = (filters?: { status?: string; search?: string }) => {
+  const query: Record<string, any> = { role: 'seller' };
+
+  if (filters?.status) {
+    query['sellerProfile.verification.status'] = filters.status;
+  }
+
+  if (filters?.search) {
+    query.$or = [
+      { name: { $regex: filters.search, $options: 'i' } },
+      { email: { $regex: filters.search, $options: 'i' } },
+      { 'sellerProfile.businessInfo.businessName': { $regex: filters.search, $options: 'i' } },
+      { 'sellerProfile.storeSettings.storeName': { $regex: filters.search, $options: 'i' } },
+    ];
+  }
+
+  return User.countDocuments(query);
+};
+
+export const findActiveSellers = (skip: number, limit: number) => {
+  return User.find({
+    role: 'seller',
+    'sellerProfile.verification.status': 'verified',
+    'sellerProfile.isSuspended': false,
+  })
+    .select('-password')
+    .skip(skip)
+    .limit(limit)
+    .sort({ 'sellerProfile.stats.averageRating': -1 });
+};
+
+export const countActiveSellers = () => {
+  return User.countDocuments({
+    role: 'seller',
+    'sellerProfile.verification.status': 'verified',
+    'sellerProfile.isSuspended': false,
+  });
+};

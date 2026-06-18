@@ -273,3 +273,73 @@
 {"level":"error","message":"Error: request aborted","stack":"BadRequestError: request aborted\n    at IncomingMessage.onAborted (/home/greenosoft/greenosoft/marketplace-microservices/node_modules/.pnpm/raw-body@2.5.3/node_modules/raw-body/index.js:245:10)\n    at IncomingMessage.emit (node:events:509:28)\n    at IncomingMessage.emit (node:domain:489:12)\n    at IncomingMessage._destroy (node:_http_incoming:221:10)\n    at _destroy (node:internal/streams/destroy:122:10)\n    at IncomingMessage.destroy (node:internal/streams/destroy:84:5)\n    at abortIncoming (node:_http_server:848:9)\n    at socketOnClose (node:_http_server:842:3)\n    at Socket.emit (node:events:521:24)\n    at Socket.emit (node:domain:489:12)","statusCode":400,"timestamp":"2026-06-17T09:35:27.987Z"}
 {"level":"info","timestamp":"2026-06-17T11:01:55.938Z"}
 {"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-17T11:01:57.358Z"}
+{"level":"info","timestamp":"2026-06-18T06:13:55.568Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:13:56.818Z"}
+{"level":"error","message":"Registration error: User already exists with this email","stack":"Error: User already exists with this email\n    at registerUser (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/services/userService.ts:106:11)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async register (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/controllers/userController.ts:37:18)","statusCode":400,"timestamp":"2026-06-18T06:25:39.487Z"}
+{"level":"error","message":"Registration error: User already exists with this email","stack":"Error: User already exists with this email\n    at registerUser (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/services/userService.ts:106:11)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async register (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/controllers/userController.ts:37:18)","statusCode":400,"timestamp":"2026-06-18T06:26:01.287Z"}
+{"level":"error","message":"Registration error: User already exists with this email","stack":"Error: User already exists with this email\n    at registerUser (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/services/userService.ts:106:11)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async register (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/controllers/userController.ts:37:18)","statusCode":400,"timestamp":"2026-06-18T06:29:36.425Z"}
+{"level":"error","message":"Registration error: User already exists with this email","stack":"Error: User already exists with this email\n    at registerUser (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/services/userService.ts:106:11)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async register (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/controllers/userController.ts:37:18)","statusCode":400,"timestamp":"2026-06-18T06:29:37.750Z"}
+{"level":"error","message":"Login error: Incorrect email or password","stack":"Error: Incorrect email or password\n    at loginUser (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/services/userService.ts:130:11)\n    at async login (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/controllers/userController.ts:57:18)","statusCode":401,"timestamp":"2026-06-18T06:31:18.418Z"}
+{"level":"error","message":"Login error: Incorrect email or password","stack":"Error: Incorrect email or password\n    at loginUser (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/services/userService.ts:130:11)\n    at async login (/home/greenosoft/greenosoft/marketplace-microservices/apps/user-service/src/controllers/userController.ts:57:18)","statusCode":401,"timestamp":"2026-06-18T06:31:56.756Z"}
+{"level":"info","timestamp":"2026-06-18T06:44:13.924Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:44:15.467Z"}
+{"level":"info","timestamp":"2026-06-18T06:44:20.935Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:44:21.997Z"}
+{"level":"info","timestamp":"2026-06-18T06:44:54.220Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:44:55.259Z"}
+{"level":"info","timestamp":"2026-06-18T06:45:44.808Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:45:46.217Z"}
+{"level":"info","timestamp":"2026-06-18T06:45:55.518Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:45:56.576Z"}
+{"level":"info","timestamp":"2026-06-18T06:46:06.543Z"}
+{"level":"info","timestamp":"2026-06-18T06:46:08.713Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:46:09.760Z"}
+{"level":"info","timestamp":"2026-06-18T06:46:18.455Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:46:19.528Z"}
+{"level":"info","timestamp":"2026-06-18T06:46:21.393Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:46:22.448Z"}
+{"level":"info","timestamp":"2026-06-18T06:46:35.604Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:46:36.799Z"}
+{"level":"info","timestamp":"2026-06-18T06:46:40.906Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:46:42.009Z"}
+{"level":"info","timestamp":"2026-06-18T06:46:46.557Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:46:47.661Z"}
+{"level":"info","timestamp":"2026-06-18T06:46:56.389Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:46:57.523Z"}
+{"level":"info","timestamp":"2026-06-18T06:47:09.176Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:47:10.274Z"}
+{"level":"info","timestamp":"2026-06-18T06:47:31.853Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:47:32.994Z"}
+{"level":"info","timestamp":"2026-06-18T06:47:51.808Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:47:52.974Z"}
+{"level":"info","timestamp":"2026-06-18T06:48:12.690Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:48:13.819Z"}
+{"level":"info","timestamp":"2026-06-18T06:49:52.513Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:49:53.815Z"}
+{"level":"info","timestamp":"2026-06-18T06:50:08.782Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:50:09.900Z"}
+{"level":"info","timestamp":"2026-06-18T06:52:51.238Z"}
+{"level":"info","timestamp":"2026-06-18T06:52:54.754Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:52:55.906Z"}
+{"level":"info","timestamp":"2026-06-18T06:54:09.833Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:54:11.129Z"}
+{"level":"info","timestamp":"2026-06-18T06:54:13.022Z"}
+{"level":"info","timestamp":"2026-06-18T06:54:14.412Z"}
+{"level":"info","timestamp":"2026-06-18T06:54:16.248Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:54:17.340Z"}
+{"level":"info","timestamp":"2026-06-18T06:54:36.472Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:54:37.583Z"}
+{"level":"info","timestamp":"2026-06-18T06:55:51.841Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:55:52.760Z"}
+{"level":"info","timestamp":"2026-06-18T06:57:04.872Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:57:05.827Z"}
+{"level":"info","timestamp":"2026-06-18T06:57:30.182Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:57:31.283Z"}
+{"level":"info","timestamp":"2026-06-18T06:58:04.070Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:58:05.148Z"}
+{"level":"info","timestamp":"2026-06-18T06:58:12.869Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T06:58:13.899Z"}
+{"level":"info","timestamp":"2026-06-18T07:13:59.582Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T07:14:00.730Z"}
+{"level":"info","timestamp":"2026-06-18T07:58:52.613Z"}
+{"level":"info","message":"User service connected to MongoDB","timestamp":"2026-06-18T07:58:53.605Z"}
